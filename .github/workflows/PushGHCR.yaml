@@ -1,6 +1,8 @@
 name: Docker image CI for GHCR
 
-on: push
+on:
+    push:
+        branches: [main]
 
 jobs:
     buildAndPublish:

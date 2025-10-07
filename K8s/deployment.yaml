@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app
+spec:
+  replicas: 3 # could be changed based on needs
+  selector:
+    matchLabels:
+      app: nextjs-app
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+    spec:
+      containers:
+        - name: nextjs-app
+          image: ghcr.io/hariwhois23/application:latest
+          ports:
+            - containerPort: 3000
+         
+              

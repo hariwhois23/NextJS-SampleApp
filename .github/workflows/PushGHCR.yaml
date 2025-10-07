@@ -9,6 +9,7 @@ jobs:
             - uses: actions/checkout@v4
             - name: Build and push the image
               run: |
+                  cd application
                   docker login --username ${{secrets.USERNAME}} --password ${{secrets.GHCR_PAT}} ghcr.io
                   docker build . -t ghcr.io/${{ secrets.USERNAME }}/application:latest
                   docker push  ghcr.io/${{ secrets.USERNAME }}/application:latest

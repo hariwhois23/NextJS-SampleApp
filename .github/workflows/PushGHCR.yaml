@@ -1,6 +1,7 @@
 name: Docker image CI for GHCR
 
 on: push
+     
 
 jobs:
     buildAndPublish:
@@ -14,6 +15,7 @@ jobs:
                   docker login --username ${{secrets.USERNAME}} --password ${{secrets.GHCR_PAT}} ghcr.io
                   docker build . -t ghcr.io/${{ secrets.USERNAME }}/application:${IMAGE_TAG}
                   docker push  ghcr.io/${{ secrets.USERNAME }}/application:${IMAGE_TAG}
+                  docker push  ghcr.io/${{ secrets.USERNAME }}/application:latest 
 
             - name: Verify image push
               run: |
